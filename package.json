@@ -1,6 +1,17 @@
 {
   "name": "z-hi",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "repository": "git@github.com:Alexlangl/z-hi.git",
+  "author": "alexlangl",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "eslint": "^8.3.0",
+    "lerna": "^4.0.0",
+    "typescript": "^4.5.2"
+  }
 }
