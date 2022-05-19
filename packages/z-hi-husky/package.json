@@ -1,8 +1,8 @@
 {
   "name": "z-hi-husky",
   "version": "1.0.0",
-  "main": "index.js",
   "license": "MIT",
+  "author": "Alexlangl",
   "devDependencies": {
     "husky": "^8.0.1",
     "lint-staged": "^12.4.1"
