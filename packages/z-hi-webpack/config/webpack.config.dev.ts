@@ -9,8 +9,8 @@ const devserver = new WebpackDevServer(
   {
     headers: { 'Access-Control-Allow-Origin': '*' },
     hot: true,
-    host: '127.0.0.1',
-    port: '8081',
+    host: 'localhost',
+    port: '8080',
     open: true,
     setupExitSignals: true,
     compress: true,
