@@ -50,6 +50,7 @@ export const getLoader = (isEnv: boolean) => {
       test: /\.(ts|tsx)$/,
       exclude: /(node_modules|bower_components)/,
       use: [
+        'thread-loader',
         {
           loader: 'babel-loader',
           options: {

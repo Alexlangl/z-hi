@@ -1,5 +1,5 @@
 import React from 'react';
-import './app.css';
+import './app.less';
 export default () => {
   return (
     <div className='div-container'>
