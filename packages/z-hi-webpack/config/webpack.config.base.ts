@@ -2,6 +2,8 @@ import path from 'path';
 import { Configuration } from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+const WebpackBar = require('webpackbar');
+
 import { getLoader } from './getLoader';
 
 export const ConfigInit = (
@@ -44,6 +46,7 @@ export const ConfigInit = (
         },
         nodeModules: path.resolve(__dirname, '../../node_modules'),
       }),
+      new WebpackBar(),
     ],
     module: {
       rules: [

@@ -55,7 +55,8 @@
     "webpack-merge": "^5.8.0"
   },
   "devDependencies": {
-    "webpack": "^5.72.1"
+    "webpack": "^5.72.1",
+    "webpackbar": "^5.0.2"
   },
   "browserslist": [
     "> 1%",
