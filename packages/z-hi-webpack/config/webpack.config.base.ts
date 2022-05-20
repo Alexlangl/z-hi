@@ -5,10 +5,15 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 const WebpackBar = require('webpackbar');
 
 import { getLoader } from './getLoader';
+import { webpackArgsType } from './index';
 
-export const ConfigInit = (
-  mode: 'development' | 'production'
-): Configuration => {
+export const ConfigInit = ({
+  mode,
+  entry,
+  outPath,
+  putlickPath,
+  templatePath,
+}: Partial<webpackArgsType>): Configuration => {
   const isEnv = mode === 'development';
   const {
     svgOrImgLoaders,
@@ -21,10 +26,10 @@ export const ConfigInit = (
   return {
     target: 'web',
     mode,
-    entry: path.resolve(__dirname, '../src/index.tsx'),
+    entry: entry || path.resolve(__dirname, '../src/index.tsx'),
     output: {
       filename: isEnv ? '[name].[hash:8].js' : 'js/[name].[chunkhash:8].js',
-      path: path.resolve(__dirname, '../dist'),
+      path: outPath || path.resolve(__dirname, '../dist'),
     },
     plugins: [
       new MiniCssExtractPlugin({
@@ -33,7 +38,7 @@ export const ConfigInit = (
       new HtmlWebpackPlugin({
         title: 'test fro webpack',
         filename: 'index.html',
-        template: path.resolve(__dirname, './index.ejs'),
+        template: templatePath || path.resolve(__dirname, './index.ejs'),
         hash: true,
         cache: false,
         inject: true,
