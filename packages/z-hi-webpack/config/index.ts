@@ -28,10 +28,11 @@ export interface webpackArgsType {
   startDll: boolean;
   dillPath: string;
   manifestPath: string;
+  themeVars: any;
 }
 export const baseConfig = ({
-  extendedBaseConfig,
-  extendeDevServer,
+  extendedBaseConfig = {},
+  extendeDevServer = {},
   mode,
   entry,
   outPath,
@@ -41,6 +42,7 @@ export const baseConfig = ({
   startDll,
   dillPath,
   manifestPath,
+  themeVars = {},
 }: Partial<webpackArgsType>) => {
   const baseConfig = merge(
     ConfigInit({
@@ -50,12 +52,20 @@ export const baseConfig = ({
       putlickPath,
       templatePath,
       modulesPath,
+      themeVars,
     }),
     extendedBaseConfig
   );
 
   const baseDevConfig = merge(
-    devConfig({ entry, outPath, putlickPath, templatePath, modulesPath }),
+    devConfig({
+      entry,
+      outPath,
+      putlickPath,
+      templatePath,
+      modulesPath,
+      themeVars,
+    }),
     extendedBaseConfig
   );
 
@@ -76,6 +86,7 @@ export const baseConfig = ({
       startDll,
       dillPath,
       manifestPath,
+      themeVars,
     }),
     extendedBaseConfig
   );

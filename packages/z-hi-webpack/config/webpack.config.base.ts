@@ -13,6 +13,7 @@ export const ConfigInit = ({
   outPath,
   putlickPath,
   templatePath,
+  themeVars,
 }: Partial<webpackArgsType>): Configuration => {
   const isEnv = mode === 'development';
   const {
@@ -21,7 +22,7 @@ export const ConfigInit = ({
     cssLoaders,
     lessLoaders,
     tsFileLoaders,
-  } = getLoader(isEnv);
+  } = getLoader(isEnv, themeVars);
 
   return {
     target: 'web',

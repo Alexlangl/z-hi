@@ -1,6 +1,6 @@
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-export const getLoader = (isEnv: boolean) => {
+export const getLoader = (isEnv: boolean, themeVars = {}) => {
   const cssLoaderUse = [
     isEnv ? 'style-loader' : MiniCssExtractPlugin.loader,
     'css-loader',
@@ -42,7 +42,21 @@ export const getLoader = (isEnv: boolean) => {
   const lessLoaders = [
     {
       test: /\.less$/i,
-      use: [...cssLoaderUse, 'less-loader'],
+      use: [
+        ...cssLoaderUse,
+        {
+          loader: 'less-loader',
+          options: {
+            lessOptions: {
+              exclude: /node_modules/,
+              modifyVars: {
+                ...themeVars,
+              },
+              javascriptEnabled: true,
+            },
+          },
+        },
+      ],
     },
   ];
   const tsFileLoaders = [
