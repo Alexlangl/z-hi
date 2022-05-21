@@ -82,8 +82,20 @@ export const prodConfig = ({
       templatePath,
     }),
     {
+      devtool: false,
       plugins,
       optimization: {
+        runtimeChunk: 'single',
+        minimizer: [
+          new TerserPlugin({
+            terserOptions: {
+              output: {
+                comments: false,
+              },
+            },
+          }),
+          new CssMinimizerPlugin(),
+        ],
         splitChunks: {
           chunks: 'all',
           maxInitialRequests: Infinity,
@@ -111,11 +123,7 @@ export const prodConfig = ({
             },
           },
         },
-        runtimeChunk: {
-          name: 'manifest',
-        },
         minimize: true,
-        minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
       },
       performance: {
         hints: 'error',

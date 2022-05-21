@@ -23,6 +23,11 @@ export const devConfig = ({
     }),
     {
       stats: 'errors-only',
+      devtool: 'source-map',
+      plugins: [
+        new webpack.NoEmitOnErrorsPlugin(),
+        new webpack.DefinePlugin({ __DEV__: JSON.stringify(true) }),
+      ],
     }
   );
 export const baseServer = {
