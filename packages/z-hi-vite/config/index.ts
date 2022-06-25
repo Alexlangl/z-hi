@@ -1,8 +1,7 @@
 import * as path from 'path';
 import * as _ from 'lodash';
-import { ConfigEnv, loadEnv, UserConfigExport, UserConfigFn } from 'vite';
+import { loadEnv, UserConfigExport, UserConfigFn } from 'vite';
 import { tapConfig, mergeConfig, Interceptor } from './utils';
-import configServe from './serve';
 export const defineConfig = (config?: UserConfigExport): UserConfigFn => {
   return tapConfig(config ?? {}, async (userConfig, { command, mode }) => {
     Object.assign(
